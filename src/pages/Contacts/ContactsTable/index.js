@@ -10,7 +10,8 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import { CopyToClipboardText } from "../../../component/CopyToClipboardText";
+import { CopyToClipboardText } from "../../../components/CopyToClipboardText";
+import { NATIONALITY_HUMAN_NAME } from "../../../constants/Nationality";
 
 const useStyles = makeStyles({
   table: {},
@@ -56,8 +57,12 @@ export const ContactsTable = ({ data }) => {
               </TableCell>
               <TableCell>
                 <Typography>{contact.location.country}</Typography>
+                <Typography>
+                  {contact.location.city}, {contact.location.street.name}{" "}
+                  {contact.location.street.number}
+                </Typography>
               </TableCell>
-              <TableCell>{contact.nat}</TableCell>
+              <TableCell>{NATIONALITY_HUMAN_NAME[contact.nat]}</TableCell>
             </TableRow>
           ))}
         </TableBody>
