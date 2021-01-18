@@ -43,7 +43,7 @@ export const Contacts = () => {
         <Grid item xs={12}>
           {(() => {
             if (contacts.isLoading) {
-              return <CircularProgress />;
+              return <CircularProgress data-testid="contacts-loader" />;
             }
 
             if (contacts.isError) {
