@@ -123,4 +123,27 @@ describe(`contacts data view mode`, () => {
       "Mui-selected"
     );
   });
+
+  test(`should equal grid with reload page`, async () => {
+    window.localStorage.setItem("dataViewMode", "grid");
+
+    render(<Contacts />);
+    const loader = screen.getByTestId("contacts-loader");
+
+    await waitForElementToBeRemoved(loader);
+
+    expect(screen.getByTestId("contacts-grid-container")).toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-grid")).toHaveClass(
+      "Mui-selected"
+    );
+
+    expect(
+      screen.queryByTestId("contacts-table-container")
+    ).not.toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-table")).not.toHaveClass(
+      "Mui-selected"
+    );
+
+    window.localStorage.clear();
+  });
 });
