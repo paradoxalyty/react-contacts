@@ -100,6 +100,8 @@ describe(`contacts data view mode`, () => {
     expect(screen.getByTestId("toggle-data-view-mode-grid")).not.toHaveClass(
       "Mui-selected"
     );
+
+    expect(window.localStorage.getItem("dataViewMode")).toEqual("table");
   });
 
   test(`should equal grid`, async () => {
@@ -122,6 +124,8 @@ describe(`contacts data view mode`, () => {
     expect(screen.getByTestId("toggle-data-view-mode-table")).not.toHaveClass(
       "Mui-selected"
     );
+
+    expect(window.localStorage.getItem("dataViewMode")).toEqual("grid");
   });
 
   test(`should equal grid with reload page`, async () => {
