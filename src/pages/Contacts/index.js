@@ -47,7 +47,7 @@ export const Contacts = () => {
             }
 
             if (contacts.isError) {
-              return <div>...error</div>;
+              return <div data-testid="contacts-error">...error</div>;
             }
 
             if (dataViewMode === DATA_VIEW_MODES.TABLE) {
@@ -55,7 +55,7 @@ export const Contacts = () => {
             }
 
             if (dataViewMode === DATA_VIEW_MODES.GRID) {
-              return "grid";
+              return <div data-testid="contacts-grid-container">gird</div>;
             }
 
             return null;
