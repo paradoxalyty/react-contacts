@@ -80,6 +80,32 @@ describe(`contacts data view mode`, () => {
 });
 
 describe(`contacts data view mode`, () => {
+  test(`switch from grid to table`, async () => {
+    render(<Contacts />);
+    const loader = screen.getByTestId("contacts-loader");
+
+    await waitForElementToBeRemoved(loader);
+
+    const toggleGrid = screen.getByTestId("toggle-data-view-mode-grid");
+    const toggleTable = screen.getByTestId("toggle-data-view-mode-table");
+    userEvent.click(toggleGrid);
+    userEvent.click(toggleTable);
+
+    expect(screen.getByTestId("contacts-table-container")).toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-table")).toHaveClass(
+      "Mui-selected"
+    );
+
+    expect(
+      screen.queryByTestId("contacts-grid-container")
+    ).not.toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-grid")).not.toHaveClass(
+      "Mui-selected"
+    );
+  });
+});
+
+describe(`contacts data view mode`, () => {
   test(`should equal grid`, async () => {
     render(<Contacts />);
     const loader = screen.getByTestId("contacts-loader");
