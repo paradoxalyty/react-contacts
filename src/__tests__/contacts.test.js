@@ -77,9 +77,7 @@ describe(`contacts data view mode`, () => {
       "Mui-selected"
     );
   });
-});
 
-describe(`contacts data view mode`, () => {
   test(`switch from grid to table`, async () => {
     render(<Contacts />);
     const loader = screen.getByTestId("contacts-loader");
@@ -103,9 +101,7 @@ describe(`contacts data view mode`, () => {
       "Mui-selected"
     );
   });
-});
 
-describe(`contacts data view mode`, () => {
   test(`should equal grid`, async () => {
     render(<Contacts />);
     const loader = screen.getByTestId("contacts-loader");
