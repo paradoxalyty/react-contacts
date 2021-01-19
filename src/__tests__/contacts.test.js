@@ -72,8 +72,8 @@ describe(`contacts data view mode`, () => {
     expect(
       screen.queryByTestId("contacts-grid-container")
     ).not.toBeInTheDocument();
-    // expect(screen.getByTestId("toggle-data-view-mode-gird")).not.toHaveClass(
-    //     "Mui-selected"
-    // );
+    expect(screen.getByTestId("toggle-data-view-mode-grid")).not.toHaveClass(
+      "Mui-selected"
+    );
   });
 });
