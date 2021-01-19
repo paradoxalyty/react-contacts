@@ -4,6 +4,7 @@ import {
   screen,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { server } from "../serverTests";
 import { Contacts } from "../pages/Contacts";
@@ -66,6 +67,30 @@ describe(`contacts data view mode`, () => {
 
     expect(screen.getByTestId("contacts-table-container")).toBeInTheDocument();
     expect(screen.getByTestId("toggle-data-view-mode-table")).toHaveClass(
+      "Mui-selected"
+    );
+
+    expect(
+      screen.queryByTestId("contacts-grid-container")
+    ).not.toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-grid")).not.toHaveClass(
+      "Mui-selected"
+    );
+  });
+});
+
+describe(`contacts data view mode`, () => {
+  test(`should equal grid`, async () => {
+    render(<Contacts />);
+    const loader = screen.getByTestId("contacts-loader");
+
+    await waitForElementToBeRemoved(loader);
+
+    const toggleGrid = screen.getByTestId("toggle-data-view-mode-grid");
+    userEvent.click(toggleGrid);
+
+    expect(screen.getByTestId("contacts-grid-container")).toBeInTheDocument();
+    expect(screen.getByTestId("toggle-data-view-mode-grid")).toHaveClass(
       "Mui-selected"
     );
 
