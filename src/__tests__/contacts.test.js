@@ -95,9 +95,9 @@ describe(`contacts data view mode`, () => {
     );
 
     expect(
-      screen.queryByTestId("contacts-grid-container")
+      screen.queryByTestId("contacts-table-container")
     ).not.toBeInTheDocument();
-    expect(screen.getByTestId("toggle-data-view-mode-grid")).not.toHaveClass(
+    expect(screen.getByTestId("toggle-data-view-mode-table")).not.toHaveClass(
       "Mui-selected"
     );
   });
